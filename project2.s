@@ -48,18 +48,18 @@ removeSpaceloop:
 	slti $t1, $s1, 33 
 	bne $t1, $zero, removeSpace
 
-	slti $t1, $s1, 48  #greater than 48
-	slti $t2, $s1, 65 #less than 57
-	slt $t3, $t1, $t2
+	slti $t1, $s1, 48  #greater than 48, t1 = 0
+	slti $t2, $s1, 65 #less than 57, t2 = 1
+	slt $t3, $t1, $t2 #if t1 is less than t2, t3 = 1
 	beq $t3, $zero, invalid_input
 	
 	slti $t1, $s1, 90 #greater than 90, t1 = 0
-	slti $t2, $s1, 97 #less than 97, t1 = 1
-	slt $t3, $t1, $t2
+	slti $t2, $s1, 97 #less than 97, t2 = 1
+	slt $t3, $t1, $t2 #if t1 is less than t2, t3 = 1
 	beq $t3, $zero, invalid_input
 
 	slti $t1, $s1, 122 #less than 122
-	beq $t1, $zero, invalid_input
+	bne $t1, $zero, invalid_input
 	addi $s0, $s0, 1
 	j removeSpaceloop
 	
