@@ -48,6 +48,11 @@ removeSpaceloop:
 	slti $t1, $s1 48
 	slti $t2, $s1, 65
 	slt $t3, $t1, $t2
+	bne $t3, $zero, invalid_input
+	
+	slti $t1, $s1, 90
+	slti $t2, $s1, 97
+	slt $t3, $t1, $t2
 	
 	
 removeSpace:
@@ -64,5 +69,7 @@ endLoop:
 invalid_input:
 	li $v0,4
 	la $a0, output
+	syscall
+	li $v0, 10
 	syscall
 	
