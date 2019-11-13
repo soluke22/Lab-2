@@ -28,12 +28,10 @@ main:
 	la $a0, input #asks for input
 	la $a1, 1000 #string length
 	li $v0, 8 #inputs a string
-	move $t0, $a0
 	syscall
 
 	li $s0, 0 #initialize a counter
 	li $t1, 1000
-	move $a0, $t0
 	j removeSpace
 	
 	li $v0, 4
@@ -50,17 +48,17 @@ removeSpaceloop:
 	slti $t1, $s1, 33 
 	bne $t1, $zero, removeSpace
 
-	slti $t1, $s1 48
-	slti $t2, $s1, 65
+	slti $t1, $s1, 48  #greater than 48
+	slti $t2, $s1, 65 #less than 57
 	slt $t3, $t1, $t2
-	bne $t3, $zero, invalid_input
+	beq $t3, $zero, invalid_input
 	
-	slti $t1, $s1, 90
-	slti $t2, $s1, 97
+	slti $t1, $s1, 90 #greater than 90, t1 = 0
+	slti $t2, $s1, 97 #less than 97, t1 = 1
 	slt $t3, $t1, $t2
-	bne $t3, $zero, invalid_input
+	beq $t3, $zero, invalid_input
 
-	slti $t1, $s1, 122
+	slti $t1, $s1, 122 #less than 122
 	beq $t1, $zero, invalid_input
 	addi $s0, $s0, 1
 	j removeSpaceloop
