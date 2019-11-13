@@ -31,15 +31,17 @@ main:
 	move $t0, $a0
 	syscall
 
-
 	li $s0, 0 #initialize a counter
 	li $t1, 1000
+	move $a0, $t0
 	j removeSpace
 
 #space counting loop
 
 removeSpace:
 	beq $s0, $t0, endLoop
+	add $t4, $s0, $a0 #string[i] = t4
+	lb $s1, 0($t4) #value of string[i]
 
 endLoop:
 
