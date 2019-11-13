@@ -12,7 +12,7 @@ ask:
 	.asciiz "\Input: \n"
 
 input:
-	.space 100
+	.space 4000
 
 .text
 
@@ -23,6 +23,6 @@ main:
 	syscall
 
 	la $a0,input
-	li $a1, 100
+	li $a1, 4000
 	li $v0, 8
 	syscall
