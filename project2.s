@@ -35,6 +35,11 @@ main:
 	li $t1, 1000
 	move $a0, $t0
 	j removeSpace
+	
+	li $v0, 4
+	syscall
+	li $v0, 10
+	syscall
 
 #space counting loop
 
@@ -70,7 +75,8 @@ removeSpace:
 
 endLoop:
 	
-	la $a0, $t0
+	move $t0, $a0
+	j $ra
 
 invalid_input:
 	li $v0,4
