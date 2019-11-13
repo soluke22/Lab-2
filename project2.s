@@ -32,10 +32,16 @@ main:
 	syscall
 
 
+	li $s0, 0 #initialize a counter
+	li $t1, 1000
+	j removeSpace
 
 #space counting loop
 
-countSpace:
+removeSpace:
+	beq $s0, $t0, endLoop
 
-	la $s0, buffer
+endLoop:
+
+	
 	
