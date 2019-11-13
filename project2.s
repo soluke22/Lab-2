@@ -14,9 +14,6 @@ output:
 	.asciiz "\Invalid Input \n"
 
 input:
-	.asciiz "\Input: \n"
-
-buffer:
 	.asciiz ""
 
 
@@ -52,14 +49,19 @@ removeSpaceloop:
 	slti $t2, $s1, 65 #less than 57, t2 = 1
 	slt $t3, $t1, $t2 #if t1 is less than t2, t3 = 1
 	beq $t3, $zero, invalid_input
+	li $t1, 0
+	li $t2, 0
 	
 	slti $t1, $s1, 90 #greater than 90, t1 = 0
 	slti $t2, $s1, 97 #less than 97, t2 = 1
 	slt $t3, $t1, $t2 #if t1 is less than t2, t3 = 1
 	beq $t3, $zero, invalid_input
+	li $t1, 0
+	li $t2, 0
 
 	slti $t1, $s1, 122 #less than 122
-	bne $t1, $zero, invalid_input
+	beq $t1, $zero, invalid_input
+afterloop:
 	addi $s0, $s0, 1
 	j removeSpaceloop
 	
@@ -82,4 +84,11 @@ invalid_input:
 	syscall
 	li $v0, 10
 	syscall
+
+decimal:
+	bge $s1, 58, upper
+
+lower:
+	bge $s1, 122, afterloop
+
 	
