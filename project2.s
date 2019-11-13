@@ -38,12 +38,31 @@ main:
 
 #space counting loop
 
-removeSpace:
+removeSpaceloop:
 	beq $s0, $t0, endLoop
 	add $t4, $s0, $a0 #string[i] = t4
 	lb $s1, 0($t4) #value of string[i]
+	slti $t1, $s1, 33 
+	bne $t1, $zero, removeSpace
+
+	slti $t1, $s1 48
+	slti $t2, $s1, 65
+	slt $t3, $t1, $t2
+	
+	
+removeSpace:
+	add $t5, $s0, $a0
+	sb $0, 0($t5)
+	addi $s0, $s0, 1
+	j removeSpaceloop
+
 
 endLoop:
-
 	
+	la $a0, $t0
+
+invalid_input:
+	li $v0,4
+	la $a0, output
+	syscall
 	
