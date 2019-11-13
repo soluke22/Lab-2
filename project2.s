@@ -27,8 +27,9 @@ main:
 	li $v0, 8 #inputs a string
 	syscall
 
-	li $s0, 0 #initialize a counter
+	li $s0, 1000 #initialize a counter
 	li $t1, 1000
+	li $t5, 0 #sum variable
 	j removeSpace
 	
 	li $v0, 4
@@ -62,7 +63,7 @@ removeSpaceloop:
 	slti $t1, $s1, 122 #less than 122
 	beq $t1, $zero, invalid_input
 afterloop:
-	addi $s0, $s0, 1
+	addi $s0, $s0, -1
 	j removeSpaceloop
 	
 	
@@ -87,8 +88,16 @@ invalid_input:
 
 decimal:
 	bge $s1, 58, upper
+	li $t3, 0 #creates a loop for an exponent
+	beq $t3, s1, afterdecimal #if t3 = s1, loop is complete
+	
 
 lower:
 	bge $s1, 122, afterloop
+
+upper:
+	bge $t4, 97, lower
+	bge $t4, 90, afterloop
+	ble $t4, 64, afterloop
 
 	
