@@ -53,6 +53,12 @@ removeSpaceloop:
 	slti $t1, $s1, 90
 	slti $t2, $s1, 97
 	slt $t3, $t1, $t2
+	bne $t3, $zero, invalid_input
+
+	slti $t1, $s1, 122
+	beq $t1, $zero, invalid_input
+	addi $s0, $s0, 1
+	j removeSpaceloop
 	
 	
 removeSpace:
