@@ -17,3 +17,7 @@ input:
 .text
 
 main:
+
+la $a0, ask #asks for input
+li $v0, 4
+syscall
