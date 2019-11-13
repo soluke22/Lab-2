@@ -9,15 +9,15 @@
 .data 
 
 input:
-	.asciiz "\Input: "
-error_msg:
-	.asciiz "\Invalid Input \n"
+	.asciiz "\Input: n\"
+
 
 .text
 
+
 main:
 
-	la $a0, ask #asks for input
+	la $a0, input #asks for input
 	la $a1, 1000 #string length
 	li $v0, 8 #inputs a string
 	move $t0, $a0
