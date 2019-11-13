@@ -8,21 +8,17 @@
 
 .data 
 
-ask:
-	.asciiz "\Input: \n"
-
 input:
-	.space 4000
+	.asciiz "\Input: "
+error_msg:
+	.asciiz "\Invalid Input \n"
 
 .text
 
 main:
 
 	la $a0, ask #asks for input
-	li $v0, 4
-	syscall
-
-	la $a0,input
-	li $a1, 4000
-	li $v0, 8
+	la $a1, 1000 #string length
+	li $v0, 8 #inputs a string
+	move $t0, $a0
 	syscall
