@@ -32,14 +32,9 @@ looper:
 	add $t0, $s0, $s2
 	lb $t1, 0($t0)
 	
-
-
-
-=======
 	li $s0, 0 #initialize a counter
-	li $t0, 1000 #counter for space loop
 	li $t2, 0 #sum variable
-	j removeSpaceloop
+	jal removeSpaceprogram
 	
 continue:	
 	li $t0, 4 #counter for loop
@@ -95,7 +90,10 @@ upper:
 
 #space counting loop
 
-removeSpaceloop:
+removeSpaceprogram:
+	addi $t0, $a1, 0 #adds the address of the string 
+
+	loop:	
 	beq $s0, $t0, endLoop
 	add $t4, $s0, $t6 #string[i] = t4
 	lb $s1, 0($t4) #value of string[i]
