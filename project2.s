@@ -19,16 +19,14 @@ input:
 .text
 
 main:
-	li  $v0, 8
+	li $v0, 8
 	la $a0, input
 	li $a1, 1001
+	syscall
 
-	la $s0, output
+	la $s0, input
 	li $s1, 0
-	li $s2, 0
 
-point1:
-	la $s1,($s2)
 
 looper:
 	add $t0, $s0, $s2
