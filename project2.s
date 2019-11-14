@@ -30,6 +30,7 @@ main:
 	li $s0, 1000 #initialize a counter
 	li $t1, 1000
 	li $t5, 0 #sum variable
+	li $t6, 0 #another counter variable
 	j removeSpace
 	
 	li $v0, 4
@@ -45,20 +46,6 @@ removeSpaceloop:
 	lb $s1, 0($t4) #value of string[i]
 	slti $t1, $s1, 33 
 	bne $t1, $zero, removeSpace
-
-	slti $t1, $s1, 48  #greater than 48, t1 = 0
-	slti $t2, $s1, 65 #less than 57, t2 = 1
-	slt $t3, $t1, $t2 #if t1 is less than t2, t3 = 1
-	beq $t3, $zero, invalid_input
-	li $t1, 0
-	li $t2, 0
-	
-	slti $t1, $s1, 90 #greater than 90, t1 = 0
-	slti $t2, $s1, 97 #less than 97, t2 = 1
-	slt $t3, $t1, $t2 #if t1 is less than t2, t3 = 1
-	beq $t3, $zero, invalid_input
-	li $t1, 0
-	li $t2, 0
 
 	slti $t1, $s1, 122 #less than 122
 	beq $t1, $zero, invalid_input
@@ -90,6 +77,7 @@ decimal:
 	bge $s1, 58, upper
 	li $t3, 0 #creates a loop for an exponent
 	beq $t3, s1, afterdecimal #if t3 = s1, loop is complete
+	
 	
 
 lower:
