@@ -26,19 +26,19 @@ main:
 	la $a1, 1001 #string length
 	li $v0, 8 #inputs a string
 	syscall
-	move $t6, $a0
 
 	li $s0, 0 #initialize a counter
 	li $t0, 1000 #counter for space loop
 	j removeSpaceloop
 	
-	
+continue:	
 	li $v0, 4
-	move $a0, $t6
 	la $a0, input
 	syscall
-	li $v0, 10
-	syscall
+
+newloop:
+	
+
 
 #space counting loop
 
@@ -63,7 +63,7 @@ removeSpace:
 
 endLoop:
 	
-	j $ra
+	j continue
 
 
 
