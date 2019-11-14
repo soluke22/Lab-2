@@ -73,19 +73,5 @@ invalid_input:
 	li $v0, 10
 	syscall
 
-decimal:
-	bge $s1, 58, upper
-	li $t3, 0 #creates a loop for an exponent
-	beq $t3, s1, afterdecimal #if t3 = s1, loop is complete
-	
-	
-
-lower:
-	bge $s1, 122, afterloop
-
-upper:
-	bge $t4, 97, lower
-	bge $t4, 90, afterloop
-	ble $t4, 64, afterloop
 
 	
