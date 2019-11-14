@@ -42,7 +42,12 @@ continue:
 newloop:
 	beq $s0, $t0, Exit
 	add $t3, $t0, $t6
-	
+	lb $t4, 0($t3)
+	bge $t4, 48, decimal
+
+continuenewloop:
+	addi $s0, 1
+	j newloop
 	
 
 
