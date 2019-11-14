@@ -54,6 +54,16 @@ decimal:
 	#add stuff here to do cool base stuff
 	j continuenewloop
 
+lower:
+	bge $t4, 122, continuenewloop
+	#add stuff here to do cool base stuff
+	j continuenewloop
+
+upper:
+	bge $t4, 97, lower
+	bge $t4, 90, continuenewloop
+	ble $t4, 64, continuenewloop
+
 	
 
 
