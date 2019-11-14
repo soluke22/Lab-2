@@ -23,15 +23,19 @@ input:
 main:
 
 	la $a0, input #asks for input
-	la $a1, 1000 #string length
+	la $a1, 1001 #string length
 	li $v0, 8 #inputs a string
 	syscall
+	move $t6, $a0
 
 	li $s0, 0 #initialize a counter
-	li $t0, 1000
-	j removeSpace
+	li $t0, 1000 #counter for space loop
+	j removeSpaceloop
+	
 	
 	li $v0, 4
+	move $a0, $t6
+	la $a0, input
 	syscall
 	li $v0, 10
 	syscall
@@ -46,7 +50,7 @@ removeSpaceloop:
 	bne $t1, $zero, removeSpace
 
 afterloop:
-	addi $s0, $s0, -1
+	addi $s0, $s0, 1
 	j removeSpaceloop
 	
 	
@@ -59,15 +63,8 @@ removeSpace:
 
 endLoop:
 	
-	move $t0, $a0
 	j $ra
 
-invalid_input:
-	li $v0,4
-	la $a0, output
-	syscall
-	li $v0, 10
-	syscall
 
 
 	
