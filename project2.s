@@ -27,11 +27,12 @@ main:
 	li $s1, 0
 	li $s2, 0
 
-
+point1:
+	la $s1,($s2)
 
 looper:
 	add $t0, $s0, $s2
-	lb $t2, 0($t1)
+	lb $t2, 0($t0)
 	
 
 
