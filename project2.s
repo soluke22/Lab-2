@@ -32,7 +32,7 @@ point1:
 
 looper:
 	add $t0, $s0, $s2
-	lb $t2, 0($t0)
+	lb $t1, 0($t0)
 	
 
 
