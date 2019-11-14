@@ -34,14 +34,11 @@ main:
 	j removeSpaceloop
 	
 continue:	
-	li $v0, 4
-	move $a0, $t6
-	syscall
 	li $t0, 4 #counter for loop
 	li $s0, 0 #counter for loop
 
 newloop:
-	beq $s0, $t0, Exit
+	beq $s0, $t0, exit
 	add $t3, $t0, $t6
 	lb $t4, 0($t3)
 	bge $t4, 48, decimal
@@ -54,14 +51,14 @@ decimal:
 	bge $t4, 58, upper
 	addu $t4, $t4, -48
 	add $t2, $t2, $t4
-	sll $t2, $t2, 4
+	#sll $t2, $t2, 4
 	j continuenewloop
 
 lower:
 	bge $t4, 122, continuenewloop
 	addu $t4, $t4, -87
 	add $t2, $t2, $t4
-	sll $t2, $t2, 4
+	#sll $t2, $t2, 4
 	j continuenewloop
 
 upper:
@@ -70,7 +67,7 @@ upper:
 	ble $t4, 64, continuenewloop
 	addu $t4, $t4, -55
 	add $t2, $t2, $t4
-	sll $t2, $t2, 4
+	#sll $t2, $t2, 4
 	#add stuff here to do cool base stuff
 	j continuenewloop
 
@@ -102,10 +99,8 @@ endLoop:
 	
 	j continue
 
-Exit:	
+exit:	
 	move $a0, $t6
-	li $v0, 10
+	li $v0, 1
 	syscall
-
-
 	
