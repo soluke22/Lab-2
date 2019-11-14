@@ -48,6 +48,12 @@ newloop:
 continuenewloop:
 	addi $s0, 1
 	j newloop
+
+decimal:
+	bge $t4, 58, upper
+	#add stuff here to do cool base stuff
+	j continuenewloop
+
 	
 
 
