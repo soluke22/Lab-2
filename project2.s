@@ -24,6 +24,7 @@ main:
 	li $a1, 1001
 	syscall
 
+<<<<<<< HEAD
 	la $s0, input
 	li $s1, 0
 
@@ -35,3 +36,94 @@ looper:
 
 
 
+=======
+	li $s0, 0 #initialize a counter
+	li $t0, 1000 #counter for space loop
+	li $t2, 0 #sum variable
+	j removeSpaceloop
+	
+continue:	
+	li $t0, 4 #counter for loop
+	li $s0, 0 #counter for loop
+
+newloop:
+	beq $s0, $t0, exit
+	add $t3, $t0, $t6
+	lb $t4, 0($t3)
+	bge $t4, 48, decimal
+
+continuenewloop:
+	addi $s0, 1
+	j newloop
+
+decimal:
+	bge $t4, 58, upper
+	addu $t4, $t4, -48
+	mult $t4, 35
+	mfhi $t6
+	mflo $t7
+	add $t4, $t6, $t7
+	add $t2, $t2, $t4
+	j continuenewloop
+
+lower:
+	bge $t4, 122, continuenewloop
+	addu $t4, $t4, -87
+	mult $t4, 35
+	mfhi $t6
+	mflo $t7
+	add $t4, $t6, $t7
+	add $t2, $t2, $t4
+	add $t2, $t2, $t4
+	sll $t2, $t2, 4
+	j continuenewloop
+
+upper:
+	bge $t4, 97, lower
+	bge $t4, 90, continuenewloop
+	ble $t4, 64, continuenewloop
+	addu $t4, $t4, -55
+	mult $t4, 35
+	mfhi $t6
+	mflo $t7
+	add $t4, $t6, $t7
+	add $t2, $t2, $t4
+	add $t2, $t2, $t4
+	sll $t2, $t2, 4
+	#add stuff here to do cool base stuff
+	j continuenewloop
+
+	
+
+
+#space counting loop
+
+removeSpaceloop:
+	beq $s0, $t0, endLoop
+	add $t4, $s0, $t6 #string[i] = t4
+	lb $s1, 0($t4) #value of string[i]
+	slti $t1, $s1, 33 
+	bne $t1, $zero, removeSpace
+
+afterloop:
+	addi $s0, $s0, 1
+	j removeSpaceloop
+	
+	
+removeSpace:
+	add $t5, $s0, $t6
+	sb $0, 0($t5)
+	addi $s0, $s0, 1
+	j removeSpaceloop
+
+
+endLoop:
+	
+	j continue
+
+exit:	
+	move $a0, $t6
+	li $v0, 1
+	syscall
+	
+>>>>>>> parent of c64f2b0... a lot of moving and changing
