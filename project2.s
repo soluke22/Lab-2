@@ -24,7 +24,6 @@ main:
 	li $a1, 1001
 	syscall
 
-<<<<<<< HEAD
 	la $s0, input
 	li $s1, 0
 
@@ -81,7 +80,7 @@ lower:
 upper:
 	bge $t4, 97, lower
 	bge $t4, 90, continuenewloop
-	ble $t4, 64, continuenewloop
+	ble $t4, 64, invalid
 	addu $t4, $t4, -55
 	mult $t4, 35
 	mfhi $t6
@@ -92,8 +91,6 @@ upper:
 	sll $t2, $t2, 4
 	#add stuff here to do cool base stuff
 	j continuenewloop
-
-	
 
 
 #space counting loop
@@ -125,5 +122,14 @@ exit:
 	move $a0, $t6
 	li $v0, 1
 	syscall
+	li $v0, 10
+	sycall
 	
->>>>>>> parent of c64f2b0... a lot of moving and changing
+invalid:
+	la $a0, output
+	li $v0, 4
+	syscall
+	li $v0, 10
+	syscall
+	
+
