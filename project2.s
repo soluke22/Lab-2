@@ -25,6 +25,7 @@ main:
 	la $a0, input #asks for input
 	la $a1, 1001 #string length
 	li $v0, 8 #inputs a string
+	move $t6, $a0
 	syscall
 
 	li $s0, 0 #initialize a counter
@@ -33,12 +34,14 @@ main:
 	
 continue:	
 	li $v0, 4
-	la $a0, input
+	move $a0, $t6
 	syscall
-	li $t1, 4 #counter for loop
+	li $t0, 4 #counter for loop
 	li $s0, 0 #counter for loop
 
 newloop:
+	beq $s0, $t0, Exit
+	add $t3, $t0, $t6
 	
 	
 
@@ -47,7 +50,7 @@ newloop:
 
 removeSpaceloop:
 	beq $s0, $t0, endLoop
-	add $t4, $s0, $a0 #string[i] = t4
+	add $t4, $s0, $t6 #string[i] = t4
 	lb $s1, 0($t4) #value of string[i]
 	slti $t1, $s1, 33 
 	bne $t1, $zero, removeSpace
@@ -58,7 +61,7 @@ afterloop:
 	
 	
 removeSpace:
-	add $t5, $s0, $a0
+	add $t5, $s0, $t6
 	sb $0, 0($t5)
 	addi $s0, $s0, 1
 	j removeSpaceloop
