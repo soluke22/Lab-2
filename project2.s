@@ -23,5 +23,9 @@ main:
 	la $a0, input
 	li $a1, 1001
 
+	la $s0, output
+	li $s1, 0
+	li $s2, 0
+
 
 
