@@ -35,8 +35,11 @@ continue:
 	li $v0, 4
 	la $a0, input
 	syscall
+	li $t1, 4 #counter for loop
+	li $s0, 0 #counter for loop
 
 newloop:
+	
 	
 
 
