@@ -29,3 +29,9 @@ main:
 
 
 
+iterator:
+	add $t0, $s0, $s2
+	lb 
+
+
+
