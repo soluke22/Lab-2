@@ -27,10 +27,8 @@ main:
 	li $v0, 8 #inputs a string
 	syscall
 
-	li $s0, 1000 #initialize a counter
-	li $t1, 1000
-	li $t5, 0 #sum variable
-	li $t6, 0 #another counter variable
+	li $s0, 0 #initialize a counter
+	li $t0, 1000
 	j removeSpace
 	
 	li $v0, 4
@@ -47,8 +45,6 @@ removeSpaceloop:
 	slti $t1, $s1, 33 
 	bne $t1, $zero, removeSpace
 
-	slti $t1, $s1, 122 #less than 122
-	beq $t1, $zero, invalid_input
 afterloop:
 	addi $s0, $s0, -1
 	j removeSpaceloop
