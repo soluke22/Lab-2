@@ -60,6 +60,11 @@ decimal:
 lower:
 	bge $t4, 122, continuenewloop
 	addu $t4, $t4, -87
+	mult $t4, 35
+	mfhi $t6
+	mflo $t7
+	add $t4, $t6, $t7
+	add $t2, $t2, $t4
 	add $t2, $t2, $t4
 	sll $t2, $t2, 4
 	j continuenewloop
