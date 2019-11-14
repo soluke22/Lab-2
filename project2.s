@@ -29,9 +29,10 @@ main:
 
 
 
-iterator:
+looper:
 	add $t0, $s0, $s2
-	lb 
+	lb $t2, 0($t1)
+	
 
 
 
