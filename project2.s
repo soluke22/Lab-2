@@ -63,6 +63,8 @@ upper:
 	bge $t4, 97, lower
 	bge $t4, 90, continuenewloop
 	ble $t4, 64, continuenewloop
+	#add stuff here to do cool base stuff
+	j continuenewloop
 
 	
 
@@ -92,6 +94,10 @@ endLoop:
 	
 	j continue
 
+Exit:	
+	move $a0, $t6
+	li $v0, 10
+	syscall
 
 
 	
