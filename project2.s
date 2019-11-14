@@ -74,6 +74,11 @@ upper:
 	bge $t4, 90, continuenewloop
 	ble $t4, 64, continuenewloop
 	addu $t4, $t4, -55
+	mult $t4, 35
+	mfhi $t6
+	mflo $t7
+	add $t4, $t6, $t7
+	add $t2, $t2, $t4
 	add $t2, $t2, $t4
 	sll $t2, $t2, 4
 	#add stuff here to do cool base stuff
