@@ -78,9 +78,17 @@ multiply:
 
 decimal:
 	addu $s0, $s0, -48
+	beq $t1, 0, combine
+	li $t7, 35
+	j compute
+upper:
+	addu $s0, $s0, -55
+	beq $t1, 0, combine
 	li $t7, 35
 	j compute
 
+
+	
 
 
 compute:
@@ -91,6 +99,9 @@ compute:
 	
 combine:
 	mul $s3, $t7, $s1
+	add $s4, $s4, $s3
+	li $t7, 1
+	j secondloop
 	
 
 invalid:
