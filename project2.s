@@ -15,6 +15,14 @@ output:
 
 input:
 	.asciiz ""
+zeropower:
+	.word 1
+firstpower:
+	.word 35
+secondpower:
+	.word 1225
+thirdpower:
+	.word 42875
 
 .text
 
@@ -43,10 +51,16 @@ secondloop:
 	beq $s1, 47, invalid
 	ble $s1, 57, integer
 	ble $s1, 64, invalid
-	ble $s1, 89, uppercase
+	ble $s1, 89, integer
 	ble $s1, 96, invalid
-	ble $s1, 121, lowercase
+	ble $s1, 121, integer
 	
+
+integer:
+	addu $s1, $s1, -48
+	mult $	
+
+
 invalid:
 	li $v0, 4
 	la $a0, output
