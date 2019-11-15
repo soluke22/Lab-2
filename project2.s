@@ -95,12 +95,13 @@ upper:
 	sub $s0, $s0, $t5
 	beq $t2, 0, combine
 	li $t9, 30
-	j exp
+	j compute
 
 lower:
-	addu $s0, $s0, -87
-	beq $t1, 0, combine
-	li $t7, 35
+	li $t5, 87
+	sub $s0, $s0, $t5
+	beq $t2, 0, combine
+	li $t9, 30
 	j compute
 
 compute:
