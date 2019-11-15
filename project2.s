@@ -39,6 +39,15 @@ secondloop:
 	li $s2, -1
 	add $s0, $s0, $t0
 	lb $s1, 0($s0)
+	bge $t1, 5, 
+
+invalidinput:
+	li $v0, 4
+	la $a0, output
+	syscall
+	
+	li $v0, 10
+	syscall
 	
 	
 	
