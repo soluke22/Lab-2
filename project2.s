@@ -14,7 +14,7 @@ output:
 	.asciiz "Invalid Input"
 
 input:
-	.asciiz ""
+	.space 1001
 
 .text
 
