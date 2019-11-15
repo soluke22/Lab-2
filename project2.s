@@ -63,17 +63,13 @@ checker:
 	ble $s0, 121, integer
 	bge $s0, 122, invalid
 
-
-
 space2:
 	addi $t3,$t3, -1
 	j secondloop	
 
-
-
 integer:
-	add $t1, $t1, 1
-	mul $t2, $t2,$s2
+	addi $t2, $t2, 1	
+	mul $t3, $t3, $t7
 	j secondloop
 
 
