@@ -25,11 +25,11 @@ main:
 	syscall
 
 	la $s0, input
-	li $s1, 0
+	
 
 
 looper:
-	add $t0, $s0, $s2
+	add $t0, $t0, $s0 
 	lb $t1, 0($t0)
 	
 	li $s0, 0 #initialize a counter
@@ -93,7 +93,8 @@ upper:
 removeSpaceprogram:
 	addi $t0, $a1, 0 #adds the address of the string 
 
-	loop:	
+	loop:
+	lb $t0, 0($s0)
 	beq $s0, $t0, endLoop
 	add $t4, $s0, $t6 #string[i] = t4
 	lb $s1, 0($t4) #value of string[i]
