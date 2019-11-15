@@ -86,27 +86,28 @@ multiply:
 	ble $s0, 121, lower
 
 decimal:
-	addu $s0, $s0, -48
-	beq $t1, 0, combine
+	li $t5, 48
+	sub $s0, $s0, $t5
+	beq $t2, 0, combine
 	li $t7, 35
 	j compute
 upper:
 	li $t5, 55
 	sub $s0, $s0, $t5
 	beq $t2, 0, combine
-	li $t9, 30
+	li $t9, 35
 	j compute
 
 lower:
 	li $t5, 87
 	sub $s0, $s0, $t5
 	beq $t2, 0, combine
-	li $t9, 30
+	li $t9, 35
 	j compute
 
 compute:
 	ble $t8, -1, combine
-	mul $t9, $t9, 30 
+	mul $t9, $t9, 35 
 	addi $t8, $t8, -1
 	j compute 
 	
@@ -130,7 +131,7 @@ secondloopdone:
 
 done:
 	li $v0, 1
-	move $a0, $s4
+	move $a0, $s1
 	syscall
 	
 	li $v0, 10
