@@ -48,6 +48,8 @@ secondloop:
 	add $s0, $s0, $t0
 	lb $s1, 0($s0)
 	bge $t1, 5, invalid
+	
+	beq $s0, 10
 	beq $s1, 47, invalid
 	ble $s1, 57, integer
 	ble $s1, 64, invalid
@@ -57,8 +59,12 @@ secondloop:
 	
 
 integer:
-	addu $s1, $s1, -48
-	mult $	
+	addu $s0, $s0, 1
+	mult $t2, $t2,$s2
+	j secondloop
+
+
+multiply:
 
 
 invalid:
