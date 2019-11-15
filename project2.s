@@ -60,8 +60,8 @@ secondloop:
 	
 
 integer:
-	addu $s1, $s1, 1
-	mult $t2, $t2,$s2
+	add $t1, $t1, 1
+	mul $t2, $t2,$s2
 	j secondloop
 
 
@@ -84,9 +84,13 @@ decimal:
 
 
 compute:
-
-
+	ble $t8, -1, combine
+	mul $t7, $t7, 35
+	addi $t5, $t5, -1
+	j compute 
 	
+combine:
+	mul $s3, $t7, $s1
 	
 
 invalid:
