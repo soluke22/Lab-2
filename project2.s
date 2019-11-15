@@ -23,5 +23,19 @@ main:
 	la $a0, input
 	li $a1, 1001
 	syscall
-	la $s0, input
+	la $s0, input#loads the input address into an address saved by subroutines
+
+firstloop:#removes spaces
+	add $s0, $s0, $t1
+	lb $s1, 0($s0)
+	ble $s1, 32, space
+	li $s0, 0
+	j secondloop
+
+space:
+	addi $t1, $t1, 1
+	j firstloop
+	
+secondloop:
+	
 	
