@@ -25,10 +25,8 @@ main:
 	syscall
 
 	la $s0, input
-	
 
-
-looper:
+	la $s0, input
 	add $t0, $t0, $s0 
 	lb $t1, 0($t0)
 	
