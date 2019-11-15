@@ -70,6 +70,7 @@ multiply:
 	lb $s1, 0($s0)
 	addi $t1,$t1, -1
 	addi $t4, $t4, 1
+	blt $t1, 0, 
 
 
 invalid:
@@ -79,6 +80,8 @@ invalid:
 	
 	li $v0, 10
 	syscall
+	
+done:
 	
 	
 	
