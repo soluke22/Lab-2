@@ -29,7 +29,6 @@ firstloop:#removes spaces
 	add $s0, $s0, $t1
 	lb $s1, 0($s0)
 	ble $s1, 32, space
-	li $s0, 0
 	j secondloop
 
 space:
@@ -37,5 +36,8 @@ space:
 	j firstloop
 	
 secondloop:
+	li $s2, -1
+	add $s0, $s0, $t1
+	lb $s1, 0($s0)
 	
 	
