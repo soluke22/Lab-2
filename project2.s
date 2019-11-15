@@ -37,28 +37,20 @@ firstloop:#removes spaces
 	move $t6, $t1
 	j secondloop
 
-
-
-
 space:
-	addi $t0, $t0, 1
+	addi $t1, $t1, 1
 	j firstloop
 	
 secondloop:
-	li $s2, -1
-	la $s0, input
-	add $s0, $s0, $t0
-	lb $s1, 0($s0)
-	bge $t1, 5, invalid
-	
-	beq $s1, 10, multiply
-	beq $s1, 0, multiply
-	beq $s1, 47, invalid
-	ble $s1, 57, integer
-	ble $s1, 64, invalid
-	ble $s1, 89, integer
-	ble $s1, 96, invalid
-	ble $s1, 121, integer
+	li $t7, -1
+	la $t0,input
+	add $t0,$t0,$t1
+	lb $s0, ($t0)
+	bge $t2, 5, invalid
+	bge $t3, 1, invalid
+	addi $t1, $t1, 1
+	j check
+
 	
 
 integer:
