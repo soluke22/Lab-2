@@ -66,6 +66,10 @@ integer:
 
 
 multiply:
+	add $s0, $s0, $t3
+	lb $s1, 0($s0)
+	addi $t1,$t1, -1
+	addi $t4, $t4, 1
 
 
 invalid:
