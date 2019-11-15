@@ -38,6 +38,7 @@ firstloop:#removes spaces
 	lb $s1, 0($s0)
 	ble $s1, 32, space
 	jal secondloop
+	j 
 
 space:
 	addi $t0, $t0, 1
@@ -70,7 +71,7 @@ multiply:
 	lb $s1, 0($s0)
 	addi $t1,$t1, -1
 	addi $t4, $t4, 1
-	blt $t1, 0, done
+	blt $t1, 0, secondloopdone
 	move $t5, $t2
 	ble $s0, 57, decimal
 	ble $s0, 89, upper
@@ -87,9 +88,11 @@ upper:
 	li $t7, 35
 	j compute
 
-
-	
-
+lower:
+	addu $s0, $s0, -87
+	beq $t1, 0, combine
+	li $t7, 35
+	j compute
 
 compute:
 	ble $t8, -1, combine
@@ -112,7 +115,7 @@ invalid:
 	li $v0, 10
 	syscall
 	
-done:
-	
+secondloopdone:
+	jr $ra
 	
 	
