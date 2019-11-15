@@ -91,10 +91,11 @@ decimal:
 	li $t7, 35
 	j compute
 upper:
-	addu $s0, $s0, -55
-	beq $t1, 0, combine
-	li $t7, 35
-	j compute
+	li $t5, 48
+	sub $s0, $s0, $t5
+	beq $t2, 0, combine
+	li $t9, 35
+	j exp
 
 lower:
 	addu $s0, $s0, -87
