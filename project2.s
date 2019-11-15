@@ -79,7 +79,7 @@ multiply:
 	lb $s0, ($t0)
 	addi $t2,$t2, -1
 	addi $t6, $t6, 1
-	blt $t2,0,done
+	blt $t2,0, secondloopdone
 	move $t8, $t2	
 	ble $s0, 57, decimal
 	ble $s0, 89, upper
@@ -111,10 +111,10 @@ compute:
 	j compute 
 	
 combine:
-	mul $s3, $t7, $s1
-	add $s4, $s4, $s3
-	li $t7, 1
-	j secondloop
+	mul $s2, $t9, $s0
+	add $s1, $s1, $s2
+	li $t9, 1
+	j multiply
 	
 
 invalid:
