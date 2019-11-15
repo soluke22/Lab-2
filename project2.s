@@ -76,6 +76,13 @@ multiply:
 	ble $s0, 89, upper
 	ble $s0, 121, lower
 
+decimal:
+	addu $s0, $s0, -48
+	beq $t2, 0, combine
+
+
+combine:
+	
 
 invalid:
 	li $v0, 4
