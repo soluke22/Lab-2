@@ -74,12 +74,13 @@ integer:
 
 
 multiply:
-	add $s0, $s0, $t3
-	lb $s1, 0($s0)
-	addi $t1,$t1, -1
-	addi $t4, $t4, 1
-	blt $t1, 0, secondloopdone
-	move $t5, $t2
+	la $t0, input
+	add $t0,$t0,$t6
+	lb $s0, ($t0)
+	addi $t2,$t2, -1
+	addi $t6, $t6, 1
+	blt $t2,0,done
+	move $t8, $t2	
 	ble $s0, 57, decimal
 	ble $s0, 89, upper
 	ble $s0, 121, lower
