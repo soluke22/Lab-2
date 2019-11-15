@@ -106,7 +106,7 @@ lower:
 	j compute
 
 compute:
-	ble $t8, -1, combine
+	ble $t8, 1, combine
 	mul $t9, $t9, 35 
 	addi $t8, $t8, -1
 	j compute 
