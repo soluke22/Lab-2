@@ -78,10 +78,15 @@ multiply:
 
 decimal:
 	addu $s0, $s0, -48
-	beq $t2, 0, combine
+	li $t7, 35
+	j compute
 
 
-combine:
+
+compute:
+
+
+	
 	
 
 invalid:
