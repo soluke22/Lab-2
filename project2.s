@@ -14,7 +14,7 @@ output:
 	.asciiz "Invalid Input"
 
 input:
-	.asciiz "\n"
+	.asciiz ""
 
 .text
 
@@ -42,8 +42,8 @@ secondloop:
 	lb $s1, 0($s0)
 	bge $t1, 5, invalid
 	
-	beq $s0, 10, multiply
-	beq $s0, 0, multiply
+	beq $s1, 10, multiply
+	beq $s1, 0, multiply
 	beq $s1, 47, invalid
 	ble $s1, 57, integer
 	ble $s1, 64, invalid
@@ -111,6 +111,10 @@ secondloopdone:
 	jr $ra
 
 done:
-	li $v0, 4
-	la $a0, 
+	li $v0, 1
+	move $a0, $s4
+	syscall
+	
+	li $v0, 10
+	syscall
 	
