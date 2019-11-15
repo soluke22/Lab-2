@@ -49,9 +49,17 @@ secondloop:
 	bge $t2, 5, invalid
 	bge $t3, 1, invalid
 	addi $t1, $t1, 1
-	j check
+	j checker
+checker:
+	beq $s0, 9,  space2
+	beq $s0, 32, space2
+	beq $s0, 10, convert
 
-	
+space2:
+	addi $t3,$t3, -1
+	j secondloop	
+
+
 
 integer:
 	add $t1, $t1, 1
