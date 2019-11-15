@@ -29,7 +29,7 @@ firstloop:#removes spaces
 	add $s0, $s0, $t0
 	lb $s1, 0($s0)
 	ble $s1, 32, space
-	j secondloop
+	jal secondloop
 
 space:
 	addi $t0, $t0, 1
@@ -39,9 +39,15 @@ secondloop:
 	li $s2, -1
 	add $s0, $s0, $t0
 	lb $s1, 0($s0)
-	bge $t1, 5, 
-
-invalidinput:
+	bge $t1, 5, invalid
+	beq $s1, 47, invalid
+	ble $s1, 57, integer
+	ble $s1, 64, invalid
+	ble $s1, 89, uppercase
+	ble $s1, 96, invalid
+	ble $s1, 121, lowercase
+	
+invalid:
 	li $v0, 4
 	la $a0, output
 	syscall
