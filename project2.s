@@ -54,6 +54,11 @@ checker:
 	beq $s0, 9,  space2
 	beq $s0, 32, space2
 	beq $s0, 10, convert
+	beq $s0, 0, convert
+	ble $s0, 47, invalid
+	ble $s0, 57, integer
+	
+
 
 space2:
 	addi $t3,$t3, -1
