@@ -23,3 +23,5 @@ main:
 	la $a0, input
 	li $a1, 1001
 	syscall
+	la $s0, input
+	
