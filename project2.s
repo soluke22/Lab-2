@@ -28,10 +28,10 @@ main:
 
 firstloop:#removes spaces
 
-	la $t0,data
+	la $t0,input
 	add $t0,$t0,$t1
 	lb $s0, ($t0)
-	beq $s0, 0, done
+	beq $s0, $0, done
 	beq $s0, 9, space
 	beq $s0, 32, space
 	move $t6, $t1
@@ -53,8 +53,8 @@ secondloop:
 checker:
 	beq $s0, 9,  space2
 	beq $s0, 32, space2
-	beq $s0, 10, convert
-	beq $s0, 0, convert
+	beq $s0, 10, multiply
+	beq $s0, $0, multiply
 	ble $s0, 47, invalid
 	ble $s0, 57, integer
 	ble $s0, 64, invalid
