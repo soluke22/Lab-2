@@ -26,18 +26,19 @@ main:
 	la $s0, input#loads the input address into an address saved by subroutines
 
 firstloop:#removes spaces
-	add $s0, $s0, $t1
+	add $s0, $s0, $t0
 	lb $s1, 0($s0)
 	ble $s1, 32, space
 	j secondloop
 
 space:
-	addi $t1, $t1, 1
+	addi $t0, $t0, 1
 	j firstloop
 	
 secondloop:
 	li $s2, -1
-	add $s0, $s0, $t1
+	add $s0, $s0, $t0
 	lb $s1, 0($s0)
+	
 	
 	
