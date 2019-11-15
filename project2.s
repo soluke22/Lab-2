@@ -28,7 +28,10 @@ main:
 firstloop:#removes spaces
 	add $s0, $s0, $t0
 	lb $s1, 0($s0)
-	ble $s1, 32, space
+	beq $s0, 0, done
+	beq $s0, 9, space
+	beq $s0, 32, space
+
 	jal secondloop
 	j done
 
