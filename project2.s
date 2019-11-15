@@ -106,8 +106,8 @@ lower:
 
 compute:
 	ble $t8, -1, combine
-	mul $t7, $t7, 35
-	addi $t5, $t5, -1
+	mul $t9, $t9, 30 
+	addi $t8, $t8, -1
 	j compute 
 	
 combine:
