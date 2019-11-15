@@ -57,7 +57,12 @@ checker:
 	beq $s0, 0, convert
 	ble $s0, 47, invalid
 	ble $s0, 57, integer
-	
+	ble $s0, 64, invalid
+	ble $s0, 89, integer
+	ble $s0, 96, invalid
+	ble $s0, 121, integer
+	bge $s0, 122, invalid
+
 
 
 space2:
