@@ -14,15 +14,7 @@ output:
 	.asciiz "Invalid Input"
 
 input:
-	.asciiz ""
-zeropower:
-	.word 1
-firstpower:
-	.word 35
-secondpower:
-	.word 1225
-thirdpower:
-	.word 42875
+	.asciiz "\n"
 
 .text
 
@@ -38,7 +30,7 @@ firstloop:#removes spaces
 	lb $s1, 0($s0)
 	ble $s1, 32, space
 	jal secondloop
-	j 
+	j done
 
 space:
 	addi $t0, $t0, 1
@@ -117,5 +109,8 @@ invalid:
 	
 secondloopdone:
 	jr $ra
-	
+
+done:
+	li $v0, 4
+	la $a0, 
 	
